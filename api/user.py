@@ -42,10 +42,11 @@ def api_root():
   return jsonify(result)
 
 
-@app.route('/form', methods=['GET', 'POST'])
-def form():
+@app.route('/criar', methods=['GET', 'POST'])
+def criar():
     if request.method == 'POST':
         nome = request.form['nome']
+        print(nome)
         valor = request.form['valor']
         cursor.execute(f'INSERT INTO gb.clentes (nome, valor) VALUES ("{nome}","{valor}")')
         connection.commit()
@@ -65,6 +66,16 @@ def deletar_id(id):
   cursor.execute(f'DELETE from gb.clentes WHERE idclentes = {id};')
   connection.commit()
   return redirect('/')
+
+@app.route('/deletar',methods=['GET', 'POST'])
+def delete():
+  if request.method == 'POST':
+    id = request.form['idclentes']
+    cursor.execute(f'DELETE from gb.clentes WHERE idclentes = {id};')
+    connection.commit()
+    return redirect('/')
+  else:
+    return render_template('del.html')
 
 
 
