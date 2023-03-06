@@ -5,17 +5,11 @@ from flask import Flask,jsonify,request,json,redirect,render_template
 from jinja2 import Template
 from pprint import pprint
 
-# connection = pymysql.connect(host="localhost",
-#     user="root",
-#     password="9695948586",
-#     database="gb")
-
-
 
 try:
     connection = mysql.connector.connect(host="localhost",
     user="root",
-    password="9695948586",
+    password="**********",
     database="gb"
     )
     print("MySQL Database connection successful")
